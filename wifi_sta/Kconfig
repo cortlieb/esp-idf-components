@@ -1,0 +1,31 @@
+menu "WiFi STA Configuration"
+	config WIFI_STA_CONNECT
+        bool "Connect using WiFi"
+        default n
+        help
+            Enables the WiFi driver to connect to your local network.
+
+    if WIFI_STA_CONNECT
+		config WIFI_STA_SSID
+			string "WiFi SSID"
+			default "your-ssid"
+			help
+				The SSID of the WiFi network to connect to.
+
+		config WIFI_STA_PASSWORD
+			string "WiFi Password"
+			default "your-password"
+			help
+				The password of the WiFi network to connect to.
+				
+		config WIFI_STA_HOSTNAME
+            string "WiFi Hostname"
+            default "esp32-wifi"
+            help
+                Hostname for the ESP32 device. This will be used for:
+                - mDNS (device.local)
+                - DHCP hostname
+                - Network identification
+
+    endif				
+endmenu
